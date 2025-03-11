@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://dbr3r40wcgh5w"]
+
+[ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_is6v4"]
+[ext_resource type="Script" uid="uid://4qtos64u6x0v" path="res://addons/godot-xr-tools/functions/function_pointer.gd" id="2_b7d4o"]
+[ext_resource type="PackedScene" uid="uid://cigx2gnf4tg4d" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_physics_hand.tscn" id="3_6mgpq"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="3_y0fpp"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_cba1f"]
+[ext_resource type="PackedScene" uid="uid://ddsj74hpt1kgb" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_physics_tac_glove.tscn" id="5_m3vyv"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="6_2k3w2"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="6_cba1f"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="6_txa0r"]
+[ext_resource type="PackedScene" uid="uid://drs4eeq721ojn" path="res://addons/godot-xr-tools/functions/movement_sprint.tscn" id="8_cba1f"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="8_pcevl"]
+[ext_resource type="PackedScene" uid="uid://chcuj3jysipk8" path="res://addons/godot-xr-tools/functions/movement_jog.tscn" id="9_2k3w2"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="10_2k3w2"]
+
+[node name="PlayerController" type="XROrigin3D"]
+
+[node name="MovementJog" parent="." instance=ExtResource("9_2k3w2")]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+current = true
+
+[node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_is6v4")]
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.1, 0)
+tracker = &"right_hand"
+show_when_tracked = true
+script = ExtResource("2_b7d4o")
+collision_mask = 5439492
+
+[node name="RightPhysicsHand" parent="RightHand" instance=ExtResource("3_6mgpq")]
+collision_layer = 196608
+
+[node name="MovementTurn" parent="RightHand" instance=ExtResource("3_y0fpp")]
+turn_mode = 2
+smooth_turn_speed = 3.0
+
+[node name="FunctionTeleport" parent="RightHand" instance=ExtResource("6_txa0r")]
+teleport_button_action = "primary"
+x_max = 0.3
+x_min = -0.3
+y_min = -0.5
+
+[node name="FunctionPickup" parent="RightHand" instance=ExtResource("5_cba1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0502223, 0, 0.0979872)
+grab_distance = 0.1
+grab_collision_mask = 458756
+ranged_distance = 10.0
+ranged_angle = 45.0
+
+[node name="MovementJump" parent="RightHand" instance=ExtResource("6_2k3w2")]
+jump_button_action = "primary"
+x_max = 0.3
+x_min = -0.3
+y_min = 0.5
+y_max = 1.0
+
+[node name="FunctionPointer" parent="RightHand" instance=ExtResource("8_pcevl")]
+transform = Transform3D(0.819152, -0.0996005, 0.564862, 0, 0.984808, 0.173648, -0.573576, -0.142244, 0.806707, 0.00707233, -0.0353574, 0.0752665)
+show_laser = 2
+laser_length = 1
+target_radius = 0.2
+collision_mask = 5242884
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.1, 0)
+tracker = &"left_hand"
+show_when_tracked = true
+
+[node name="MovementDirect" parent="LeftHand" instance=ExtResource("6_cba1f")]
+strafe = true
+
+[node name="LeftPhysicsHand" parent="LeftHand" instance=ExtResource("5_m3vyv")]
+collision_layer = 196608
+
+[node name="MovementSprint" parent="LeftHand" instance=ExtResource("8_cba1f")]
+
+[node name="FunctionPickup" parent="LeftHand" instance=ExtResource("5_cba1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0502223, 0, 0.0979872)
+grab_distance = 0.1
+
+[node name="PlayerBody" parent="." instance=ExtResource("10_2k3w2")]
+collision_mask = 1019
+floor_stop_on_slope = false
+floor_block_on_wall = false
+player_height_max = 1.0
+push_rigid_bodies = false
