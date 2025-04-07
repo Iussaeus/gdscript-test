@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oe6sonp66drj"]
+
+[ext_resource type="Script" uid="uid://48nimneqyl4d" path="res://screen-test/entities/code-blocks/base-block/scripts/pin.gd" id="1_mfl8h"]
+
+[node name="Pin" type="Marker2D"]
+script = ExtResource("1_mfl8h")

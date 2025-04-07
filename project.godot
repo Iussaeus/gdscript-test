@@ -19,10 +19,17 @@ config/icon="res://icon.svg"
 
 XRToolsUserSettings="*res://third-party/godot-xr-tools/user_settings/user_settings.gd"
 XRToolsRumbleManager="*res://third-party/godot-xr-tools/rumble/rumble_manager.gd"
+BlockManager="*res://screen-test/entities/globals/scripts/block_manager.gd"
+GameState="*res://entities/globals/game_state.gd"
 
 [debug]
 
+gdscript/warnings/untyped_declaration=1
 gdscript/warnings/inference_on_variant=1
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
@@ -36,18 +43,42 @@ naming/script_name_casing=2
 
 enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/LineRenderer/plugin.cfg", "res://addons/prototype_mini_bundle/plugin.cfg")
 
+[global_group]
+
+snapable=""
+
+[input]
+
+left_click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(97, 17),"global_position":Vector2(106, 65),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
 [layer_names]
 
 3d_physics/layer_1="static_world"
 3d_physics/layer_2="dynamic_world"
 3d_physics/layer_3="pickable_objects"
+3d_physics/layer_4="held_objects"
+3d_physics/layer_5="snappable_objects"
+3d_physics/layer_6="snapped_objects"
+3d_physics/layer_7="board"
 3d_physics/layer_17="held_objects"
 3d_physics/layer_18="physics_hands"
 3d_physics/layer_20="player_body"
 
+[physics]
+
+3d/physics_engine="Jolt Physics"
+jolt_physics_3d/simulation/velocity_steps=20
+jolt_physics_3d/simulation/position_steps=10
+jolt_physics_3d/simulation/speculative_contact_distance=0.1
+
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/screen_space_aa=1
 
 [xr]
 

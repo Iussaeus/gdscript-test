@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4tp0la70dat"]
+
+[ext_resource type="Script" uid="uid://cugfb2qdg5k12" path="res://screen-test/entities/evaluator/scripts/evaluator_screen.gd" id="1_p70nq"]
+[ext_resource type="PackedScene" uid="uid://dro7uu7vtgsmn" path="res://screen-test/entities/display/scenes/cursor.tscn" id="3_6e1bm"]
+
+[node name="EvaluatorScreen" type="Node2D"]
+script = ExtResource("1_p70nq")
+
+[node name="Cursor" parent="." instance=ExtResource("3_6e1bm")]
+z_index = 4096
+position = Vector2(1, 0)

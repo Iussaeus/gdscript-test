@@ -85,7 +85,7 @@ func set_webxr_primary(new_value : WebXRPrimary) -> void:
 ## Gets the WebXR primary (taking into account auto detection).
 func get_real_webxr_primary() -> WebXRPrimary:
 	if webxr_primary == WebXRPrimary.AUTO:
-		return webxr_auto_primary
+		return webxr_auto_primary as WebXRPrimary
 	return webxr_primary
 
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://f7y8pe7g4bp5"]
+
+[ext_resource type="Script" uid="uid://blpmsh7ephqmr" path="res://third-party/godot-xr-tools/objects/highlight/highlight_ring.gd" id="1_m73g6"]
+[ext_resource type="Material" uid="uid://dpdt4bqph5s3v" path="res://entities/items/scenes/grabbable_highlighttres.tres" id="1_rfytm"]
+
+[node name="ObjectHighlighting" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 5.96047e-08, 0, 1, 0, -5.96047e-08, 0, 1, 0, 0, 0)
+material_override = ExtResource("1_rfytm")
+skeleton = NodePath("../HighlightRing")
+script = ExtResource("1_m73g6")

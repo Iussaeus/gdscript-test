@@ -93,8 +93,8 @@ func scene_loaded(user_data = null):
 	# Called after scene is loaded
 
 	# Make sure our camera becomes the current camera
-	$XROrigin3D/XRCamera3D.current = true
-	$XROrigin3D.current = true
+	# $XROrigin3D/XRCamera3D.current = true
+	# $XROrigin3D.current = true
 
 	# Start by assuming the user_data contains spawn position information.
 	var spawn_position = user_data

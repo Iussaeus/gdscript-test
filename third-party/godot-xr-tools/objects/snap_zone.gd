@@ -163,7 +163,9 @@ func drop_object() -> void:
 	if not is_instance_valid(picked_up_object):
 		return
 
-	# let go of this object
+	# if picked_up_object is Snapable:
+	# 	picked_up_object.snapped_to = self
+
 	picked_up_object.let_go(self, Vector3.ZERO, Vector3.ZERO)
 	picked_up_object = null
 	has_dropped.emit()
@@ -258,6 +260,9 @@ func pick_up_object(target: Node3D) -> void:
 				player.stop()
 			player.stream = stash_sound
 			player.play()
+
+	# if target is Snapable:
+	# 	target.snapped_to = self
 
 	target.pick_up(self)
 

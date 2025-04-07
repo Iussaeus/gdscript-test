@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b00pn51nv6cgx"]
+
+[ext_resource type="Script" uid="uid://d1mgf42omwf8u" path="res://screen-test/entities/curve-renderer/scripts/curve_renderer.gd" id="1_ar2cc"]
+
+[node name="CurveRenderer" type="Node2D"]
+script = ExtResource("1_ar2cc")
+start_position = null
+end_position = null

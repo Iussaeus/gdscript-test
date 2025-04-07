@@ -15,19 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://third-party/godot-xr-tools/player/player_body.tscn" id="10_2k3w2"]
 [ext_resource type="Script" uid="uid://v62x04osne6" path="res://third-party/godot-xr-tools/overrides/ground_physics_settings.gd" id="14_pcevl"]
 
-[sub_resource type="Resource" id="Resource_a5mju"]
-script = ExtResource("14_pcevl")
-flags = 48
-move_drag = 5.0
-move_traction = 30.0
-stop_on_slope = true
-move_max_slope = 45.0
-jump_max_slope = 45.0
-jump_velocity = 5.0
-bounciness = 0.2
-bounce_threshold = 1.0
-metadata/_custom_type_script = "uid://v62x04osne6"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pcevl"]
 animation = &"Grip"
 
@@ -90,6 +77,19 @@ nodes/Trigger/node = SubResource("AnimationNodeBlend2_ho0n2")
 nodes/Trigger/position = Vector2(-360, 20)
 node_connections = [&"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1", &"output", 0, &"Grip"]
 
+[sub_resource type="Resource" id="Resource_a5mju"]
+script = ExtResource("14_pcevl")
+flags = 48
+move_drag = 5.0
+move_traction = 30.0
+stop_on_slope = true
+move_max_slope = 45.0
+jump_max_slope = 45.0
+jump_velocity = 5.0
+bounciness = 0.2
+bounce_threshold = 1.0
+metadata/_custom_type_script = "uid://v62x04osne6"
+
 [node name="PlayerController" type="XROrigin3D"]
 current = true
 
@@ -98,16 +98,6 @@ current = true
 
 [node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_is6v4")]
 
-[node name="PlayerBody" parent="." instance=ExtResource("10_2k3w2")]
-collision_mask = 1
-floor_stop_on_slope = false
-floor_block_on_wall = false
-platform_floor_layers = 0
-player_height_min = 1.0
-player_height_max = 1.7
-push_rigid_bodies = false
-physics = SubResource("Resource_a5mju")
-
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.943646, 1.1, 0)
 tracker = &"right_hand"
@@ -115,7 +105,7 @@ show_when_tracked = true
 
 [node name="XRToolsCollisionHand" type="AnimatableBody3D" parent="RightHand" node_paths=PackedStringArray("hand_skeleton")]
 collision_layer = 131072
-collision_mask = 131087
+collision_mask = 131135
 script = ExtResource("3_b7d4o")
 hand_skeleton = NodePath("RightPhysicsHand/Hand_R/Armature/Skeleton3D")
 metadata/_custom_type_script = "uid://dccs3w0763htm"
@@ -216,6 +206,7 @@ teleport_button_action = "primary"
 x_max = 0.3
 x_min = -0.3
 y_min = -0.5
+rotation_action = "empty"
 
 [node name="MovementJump" parent="RightHand" instance=ExtResource("6_2k3w2")]
 jump_button_action = "primary"
@@ -225,13 +216,14 @@ y_min = 0.5
 y_max = 1.0
 
 [node name="FunctionPickup" parent="RightHand" instance=ExtResource("5_cba1f")]
-grab_collision_mask = 196612
+grab_collision_mask = 196692
 ranged_distance = 10.0
+ranged_collision_mask = 84
 
 [node name="FunctionPointer" parent="RightHand" instance=ExtResource("8_pcevl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 show_laser = 0
-collision_mask = 5242884
+collision_mask = 5242964
 
 [node name="LeftHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.1, 0)
@@ -240,7 +232,7 @@ show_when_tracked = true
 
 [node name="XRToolsCollisionHand" type="AnimatableBody3D" parent="LeftHand" node_paths=PackedStringArray("hand_skeleton")]
 collision_layer = 131072
-collision_mask = 131087
+collision_mask = 131135
 script = ExtResource("3_b7d4o")
 hand_skeleton = NodePath("LeftPhysicsHand/Hand_Glove_L/Armature/Skeleton3D")
 metadata/_custom_type_script = "uid://dccs3w0763htm"
@@ -338,15 +330,27 @@ strafe = true
 [node name="MovementSprint" parent="LeftHand" instance=ExtResource("8_cba1f")]
 
 [node name="FunctionPickup" parent="LeftHand" instance=ExtResource("5_cba1f")]
-grab_collision_mask = 65540
+grab_collision_mask = 65620
 ranged_distance = 10.0
+ranged_collision_mask = 84
+impulse_factor = 0.1
 
 [node name="FunctionPointer" parent="LeftHand" instance=ExtResource("8_pcevl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 show_laser = 0
 laser_length = 1
 target_radius = 0.2
-collision_mask = 5242884
+collision_mask = 5242964
+
+[node name="PlayerBody" parent="." instance=ExtResource("10_2k3w2")]
+collision_mask = 1
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_floor_layers = 0
+player_height_min = 1.0
+player_height_max = 1.7
+push_rigid_bodies = false
+physics = SubResource("Resource_a5mju")
 
 [node name="MovementJog" parent="." instance=ExtResource("9_2k3w2")]
 

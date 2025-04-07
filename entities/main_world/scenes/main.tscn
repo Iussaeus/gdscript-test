@@ -1,16 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://dpms2flu6atlm"]
+[gd_scene load_steps=23 format=3 uid="uid://dpms2flu6atlm"]
 
+[ext_resource type="Script" uid="uid://c4r8lymp45gu7" path="res://third-party/godot-xr-tools/staging/scene_base.gd" id="1_5fidp"]
 [ext_resource type="PackedScene" uid="uid://ctr6alkknyxai" path="res://entities/items/scenes/grabbable_cylinder.tscn" id="1_7g1ko"]
 [ext_resource type="PackedScene" uid="uid://bi3cdncfbde03" path="res://entities/main_world/scenes/prop_cube_plus_half.tscn" id="1_8wet2"]
+[ext_resource type="PackedScene" uid="uid://40wyg6ltd333" path="res://entities/items/scenes/board.tscn" id="1_b1d7d"]
 [ext_resource type="PackedScene" uid="uid://d3o0iqcnpmmal" path="res://entities/items/scenes/grabbable_sphere.tscn" id="1_gnj6q"]
 [ext_resource type="PackedScene" uid="uid://ddpne3cqbhfyx" path="res://entities/items/scenes/grabbable_cube.tscn" id="2_7g1ko"]
+[ext_resource type="PackedScene" uid="uid://bgof8kq72fail" path="res://entities/items/scenes/snapable_cube.tscn" id="2_b3fr1"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://third-party/godot-xr-tools/xr/start_xr.tscn" id="2_y5xsi"]
-[ext_resource type="Material" uid="uid://dgjiw8udooecr" path="res://addons/prototype_mini_bundle/M_prototype_dark.tres" id="3_gnj6q"]
-[ext_resource type="PackedScene" uid="uid://0vmntyr615js" path="res://addons/prototype_mini_bundle/prop_cube.tscn" id="4_7g1ko"]
-[ext_resource type="PackedScene" uid="uid://c5hkhu8upxsf7" path="res://addons/prototype_mini_bundle/prop_cylinder.tscn" id="5_walll"]
-[ext_resource type="PackedScene" uid="uid://ciuwt2yj4hcu2" path="res://addons/prototype_mini_bundle/prop_prism.tscn" id="6_b1d7d"]
-[ext_resource type="PackedScene" uid="uid://dxvxy65pv5hoe" path="res://addons/prototype_mini_bundle/prop_sphere.tscn" id="7_b3fr1"]
+[ext_resource type="PackedScene" uid="uid://bs8d8762xmpyo" path="res://entities/items/scenes/snapable_cylinder.tscn" id="3_b3fr1"]
+[ext_resource type="Material" uid="uid://dgjiw8udooecr" path="res://screen-test/addons/prototype_mini_bundle/M_prototype_dark.tres" id="3_gnj6q"]
+[ext_resource type="PackedScene" uid="uid://b10n4pncpwdqa" path="res://screen-test/entities/display/scenes/secondary_display.tscn" id="3_sjy5i"]
+[ext_resource type="PackedScene" uid="uid://0vmntyr615js" path="res://screen-test/addons/prototype_mini_bundle/prop_cube.tscn" id="4_7g1ko"]
+[ext_resource type="PackedScene" uid="uid://c5hkhu8upxsf7" path="res://screen-test/addons/prototype_mini_bundle/prop_cylinder.tscn" id="5_walll"]
+[ext_resource type="PackedScene" uid="uid://ciuwt2yj4hcu2" path="res://screen-test/addons/prototype_mini_bundle/prop_prism.tscn" id="6_b1d7d"]
+[ext_resource type="PackedScene" uid="uid://dxvxy65pv5hoe" path="res://screen-test/addons/prototype_mini_bundle/prop_sphere.tscn" id="7_b3fr1"]
 [ext_resource type="PackedScene" uid="uid://dbr3r40wcgh5w" path="res://entities/player/player_controller/scenes/player_controller.tscn" id="8_70be3"]
+[ext_resource type="PackedScene" uid="uid://bwlwy1vao7i7s" path="res://screen-test/entities/display/scenes/main_display.tscn" id="16_ugl70"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_curve = 0.00937503
@@ -37,21 +43,90 @@ size = Vector3(30, 1, 30)
 points = PackedVector3Array(-15, -0.5, -15, -15, 0.5, -15, 15, -0.5, -15, -15, -0.5, 15, -15, 0.5, 15, 15, 0.5, -15, 15, -0.5, 15, 15, 0.5, 15)
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_5fidp")
+metadata/_custom_type_script = "uid://c4r8lymp45gu7"
 
-[node name="PickableCylinder" parent="." instance=ExtResource("1_7g1ko")]
+[node name="Screen" type="Node" parent="."]
+
+[node name="MainDisplay" parent="Screen" instance=ExtResource("16_ugl70")]
+transform = Transform3D(-0.587898, 0, -0.808935, 0, 1, 0, 0.808935, 0, -0.587898, 3, 2, 3.5)
+
+[node name="SecondaryDisplay" parent="Screen" instance=ExtResource("3_sjy5i")]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 0.5, 2, 5.5)
+
+[node name="Snap" type="Node" parent="."]
+
+[node name="Board" parent="Snap" instance=ExtResource("1_b1d7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60953, 1.18084, -2.61289)
+
+[node name="SnapableCube" parent="Snap" instance=ExtResource("2_b3fr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72686, 1.13314, -3.67582)
+ranged_grab_method = 2
+
+[node name="SnapableCube2" parent="Snap" instance=ExtResource("2_b3fr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3828, 1.17927, -3.23768)
+ranged_grab_method = 2
+
+[node name="SnapableCube3" parent="Snap" instance=ExtResource("2_b3fr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72686, 1.11855, -3.41475)
+ranged_grab_method = 2
+
+[node name="SnapableCube4" parent="Snap" instance=ExtResource("2_b3fr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38957, 1.13868, -3.57703)
+ranged_grab_method = 2
+
+[node name="SnapableCylinder" parent="Snap" instance=ExtResource("3_b3fr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48771, -3.50708)
+
+[node name="SnapableCylinder2" parent="Snap" instance=ExtResource("3_b3fr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48771, -4.81936)
+
+[node name="SnapableCylinder3" parent="Snap" instance=ExtResource("3_b3fr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48771, -4.29712)
+
+[node name="SnapableCylinder4" parent="Snap" instance=ExtResource("3_b3fr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48771, -3.84234)
+
+[node name="ItemContainer" type="Node" parent="."]
+
+[node name="PickableCylinder" parent="ItemContainer" instance=ExtResource("1_7g1ko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27878, 1.87326, -4.98235)
 
-[node name="Sphere" parent="." instance=ExtResource("1_gnj6q")]
+[node name="Sphere" parent="ItemContainer" instance=ExtResource("1_gnj6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66438, 1.7, -4.68487)
 
-[node name="Cube" parent="." instance=ExtResource("2_7g1ko")]
+[node name="Cube" parent="ItemContainer" instance=ExtResource("2_7g1ko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73153, 1.7, -5.356)
 
-[node name="Sphere2" parent="." instance=ExtResource("1_gnj6q")]
+[node name="Sphere2" parent="ItemContainer" instance=ExtResource("1_gnj6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90952, 1.7, -4.92072)
 
-[node name="PropCube2" parent="." instance=ExtResource("1_8wet2")]
+[node name="PropContainer" type="Node" parent="."]
+
+[node name="PropCube2" parent="PropContainer" instance=ExtResource("1_8wet2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.75, -5)
+skeleton = NodePath("../..")
+
+[node name="PropCube" parent="PropContainer" instance=ExtResource("4_7g1ko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, -1.7, 0.5, -3)
+skeleton = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="PropCylinder" parent="PropContainer" instance=ExtResource("5_walll")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2.41016, 1, -0.985289)
+skeleton = NodePath("../PropCube")
+metadata/_edit_group_ = true
+
+[node name="PropPrism" parent="PropContainer" instance=ExtResource("6_b1d7d")]
+transform = Transform3D(0.527668, 0, 0.849451, 0, 1, 0, -0.849451, 0, 0.527668, 3.01147, 0.5, 0.124167)
+skeleton = NodePath("../..")
+
+[node name="PropSphere" parent="PropContainer" instance=ExtResource("7_b3fr1")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.57846, 0.5, 1.60622)
+skeleton = NodePath("../..")
+
+[node name="PlayerController" parent="." instance=ExtResource("8_70be3")]
+transform = Transform3D(-0.90861, 0, 0.417645, 0, 1, 0, -0.417645, 0, -0.90861, 1.23465, 1.08638, -1.57487)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.930366, -0.317512, 0.183316, 2.78059e-08, 0.5, 0.866025, -0.366631, 0.805721, -0.465183, 0, 0, 0)
@@ -66,27 +141,10 @@ mesh = SubResource("BoxMesh_h2yge")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_mask = 720897
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 visible = false
 shape = SubResource("ConvexPolygonShape3D_ig7tw")
-
-[node name="PropCube" parent="." instance=ExtResource("4_7g1ko")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.5, -3)
-metadata/_edit_group_ = true
-
-[node name="PropCylinder" parent="." instance=ExtResource("5_walll")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -2.41016, 1, -0.985289)
-skeleton = NodePath("../PropCube")
-metadata/_edit_group_ = true
-
-[node name="PropPrism" parent="." instance=ExtResource("6_b1d7d")]
-transform = Transform3D(0.527668, 0, 0.849451, 0, 1, 0, -0.849451, 0, 0.527668, 3.01147, 0.5, 0.124167)
-
-[node name="PropSphere" parent="." instance=ExtResource("7_b3fr1")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.57846, 0.5, 1.60622)
-
-[node name="PlayerController" parent="." instance=ExtResource("8_70be3")]
-transform = Transform3D(-0.90861, 0, 0.417645, 0, 1, 0, -0.417645, 0, -0.90861, 1.23465, 1.08638, -1.57487)
 
 [node name="StartXR" parent="." instance=ExtResource("2_y5xsi")]

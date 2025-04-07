@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs8d8762xmpyo"]
+
+[ext_resource type="Script" uid="uid://84mquamqpfj" path="res://entities/items/scripts/snapable.gd" id="1_kdefh"]
+[ext_resource type="Material" uid="uid://cmu4vfp7y5t6b" path="res://addons/prototype_mini_bundle/M_prototype_purple.tres" id="2_dhnpc"]
+[ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://third-party/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="3_vet1q"]
+[ext_resource type="PackedScene" uid="uid://f7y8pe7g4bp5" path="res://entities/items/scenes/object_highlighting.tscn" id="4_5o41r"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://third-party/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="5_atf7p"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kdefh"]
+material = ExtResource("2_dhnpc")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kdefh"]
+height = 1.0
+radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dhnpc"]
+flip_faces = true
+top_radius = 0.11
+bottom_radius = 0.11
+height = 1.0
+radial_segments = 32
+
+[node name="SnapableCylinder" type="RigidBody3D" groups=["snapable"]]
+collision_layer = 16
+collision_mask = 196639
+mass = 0.1
+continuous_cd = true
+script = ExtResource("1_kdefh")
+picked_up_layer = 196640
+ranged_grab_method = 2
+second_hand_grab = 1
+bonus_velocity = 0.5
+metadata/_custom_type_script = "uid://f3h06vo6saay"
+
+[node name="GrabPointSnap" parent="." instance=ExtResource("3_vet1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238392, 0, 0)
+visible = true
+require_group = "snapable"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_kdefh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_kdefh")
+
+[node name="ObjectHighlighting" parent="." instance=ExtResource("4_5o41r")]
+mesh = SubResource("CylinderMesh_dhnpc")
+skeleton = NodePath("")
+
+[node name="HighlightRing" parent="." instance=ExtResource("5_atf7p")]

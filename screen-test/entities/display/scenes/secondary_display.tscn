@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://b10n4pncpwdqa"]
+
+[ext_resource type="PackedScene" uid="uid://nnse6wsxsjeo" path="res://entities/pointer_demo/objects/display.tscn" id="1_dpdc8"]
+[ext_resource type="PackedScene" uid="uid://b6px7gktdy1wu" path="res://screen-test/entities/display/scripts/secondary screen.tscn" id="2_dpdc8"]
+[ext_resource type="PackedScene" uid="uid://hqd0ohtpmny4" path="res://screen-test/entities/code-blocks/base-block/scenes/code_block.tscn" id="3_pjoq3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_pjoq3"]
+resource_local_to_scene = true
+size = Vector2(2.8, 1.9)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pjoq3"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjoq3"]
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_pjoq3")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a0rs0"]
+resource_local_to_scene = true
+size = Vector3(2.8, 1.9, 0.02)
+
+[node name="SecondaryDisplay" instance=ExtResource("1_dpdc8")]
+scene = ExtResource("2_dpdc8")
+viewport_size = Vector2(1175, 600)
+scene_properties_keys = PackedStringArray("secondary_screen.gd", "jump_block", "var_block", "if_block", "laser_block", "rotate_block", "move_block")
+jump_block = ExtResource("3_pjoq3")
+var_block = null
+if_block = null
+laser_block = null
+rotate_block = null
+move_block = null
+
+[node name="Viewport" parent="." index="0"]
+size = Vector2i(1175, 600)
+
+[node name="Screen" parent="." index="1"]
+mesh = SubResource("QuadMesh_pjoq3")
+surface_material_override/0 = SubResource("StandardMaterial3D_pjoq3")
+
+[node name="StaticBody3D" parent="." index="2"]
+viewport_size = Vector2(1175, 600)
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_a0rs0")
