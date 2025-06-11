@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://1d85roxtlqhs" path="res://third-party/godot-xr-tools/functions/function_teleport.gd" id="1"]
 [ext_resource type="Material" uid="uid://bk72wfw25ff0v" path="res://third-party/godot-xr-tools/materials/teleport.tres" id="2"]
 [ext_resource type="Material" path="res://third-party/godot-xr-tools/materials/target.tres" id="3"]
-[ext_resource type="Material" path="res://third-party/godot-xr-tools/materials/capsule.tres" id="4"]
+[ext_resource type="Material" uid="uid://c33v33xcw5s1b" path="res://third-party/godot-xr-tools/materials/capsule.tres" id="4"]
 
 [sub_resource type="PlaneMesh" id="1"]
 size = Vector2(0.05, 1)
@@ -18,7 +18,7 @@ height = 1.8
 
 [node name="FunctionTeleport" type="Node3D"]
 script = ExtResource("1")
-player_material = ExtResource("4")
+player_material = null
 
 [node name="Teleport" type="MeshInstance3D" parent="."]
 mesh = SubResource("1")
@@ -30,8 +30,10 @@ mesh = SubResource("2")
 surface_material_override/0 = ExtResource("3")
 
 [node name="Player_figure" type="Marker3D" parent="Target"]
+visible = false
 
 [node name="Capsule" type="MeshInstance3D" parent="Target/Player_figure"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+visible = false
 mesh = SubResource("3")
 surface_material_override/0 = ExtResource("4")

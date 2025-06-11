@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5tvjoc3s087k"]
+
+[ext_resource type="Script" uid="uid://xma2rroduq4i" path="res://screen-test/entities/code-blocks/scripts/rotate_block.gd" id="1_f0hkc"]
+
+[node name="RotateBlock" type="Node2D"]
+script = ExtResource("1_f0hkc")
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

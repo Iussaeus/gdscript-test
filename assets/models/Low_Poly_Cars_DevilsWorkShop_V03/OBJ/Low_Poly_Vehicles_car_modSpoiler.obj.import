@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cpec67hlnj8w6"
+path="res://.godot/imported/Low_Poly_Vehicles_car_modSpoiler.obj-8276ecbb12a24f42e4b46c0480d5851f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Low_Poly_Vehicles_car_modSpoiler.obj-8276ecbb12a24f42e4b46c0480d5851f.mesh"]
+
+source_file="res://assets/models/Low_Poly_Cars_DevilsWorkShop_V03/OBJ/Low_Poly_Vehicles_car_modSpoiler.obj"
+dest_files=["res://.godot/imported/Low_Poly_Vehicles_car_modSpoiler.obj-8276ecbb12a24f42e4b46c0480d5851f.mesh", "res://.godot/imported/Low_Poly_Vehicles_car_modSpoiler.obj-8276ecbb12a24f42e4b46c0480d5851f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

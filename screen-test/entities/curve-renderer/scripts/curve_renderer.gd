@@ -24,6 +24,7 @@ var _visible: bool = false: set = _set_visible
 
 func _ready() -> void:
 	var line := Line2D.new()
+	line.antialiased = true
 	add_child(line)
 	_line = line
 
@@ -34,7 +35,7 @@ func _ready() -> void:
 	_path = path
 	_curve = curve 
 
-func _process(_delta:float):
+func _process(_delta:float) -> void:
 	if start_marker and end_marker:
 		if start_marker.global_position != _start_prev_pos or \
 		to_local(end_marker.global_position) !=_end_prev_pos:
@@ -44,12 +45,12 @@ func _draw() -> void:
 	if _visible:
 		draw_curve()
 
-func toggle():
+func toggle() -> void:
 	_visible = not _visible
 	_line.clear_points()
 	_curve.clear_points()
 	
-func draw_curve():
+func draw_curve() -> void:
 	if start_marker:
 		global_position = start_marker.global_position
 		_start_prev_pos = start_marker.global_position
@@ -76,35 +77,35 @@ func draw_curve():
 		_line.add_point(p)
 
 
-func _set_start(value):
+func _set_start(value: Vector2) -> void:
 	start_position = value
 	queue_redraw()
  
-func _set_end(value):
+func _set_end(value: Vector2) -> void:
 	end_position = value
 	queue_redraw()
  
-func _set_curve_offset(value):
+func _set_curve_offset(value: Vector2) -> void:
 	curve_offset = value
 	queue_redraw()
  
-func _set_middle_offset(value):
+func _set_middle_offset(value: Vector2) -> void:
 	middle_offset = value
 	queue_redraw()
  
-func _set_in_(value):
+func _set_in_(value: Vector2) -> void:
 	in_ = value
 	queue_redraw()
  
-func _set_out(value):
+func _set_out(value: Vector2) -> void:
 	out = value
 	queue_redraw()
 
-func _set_width(value):
+func _set_width(value: float) -> void:
 	width = value
 	queue_redraw()
 
-func _set_visible(value):
+func _set_visible(value: bool) -> void:
 	_visible = value
 	_line.clear_points()
 	_curve.clear_points()

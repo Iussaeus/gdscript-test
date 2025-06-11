@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://p0thqhbn67vb"]
+
+[ext_resource type="PackedScene" uid="uid://fj7vsp0hdcfp" path="res://assets/models/MOON LANDER E-2000/ROVER.blend" id="1_8ul82"]
+
+[node name="ROVER" instance=ExtResource("1_8ul82")]
+
+[node name="Camera" parent="." index="0"]
+visible = false
+
+[node name="FLOOR" parent="." index="1"]
+visible = false
+
+[node name="FOCUS" parent="." index="2"]
+visible = false
+
+[node name="ENV" parent="." index="3"]
+visible = false
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/6/rotation = Quaternion(0.123918, 0.696055, -0.695513, -0.128117)
+bones/10/rotation = Quaternion(0.700917, -0.0925338, -0.0883686, 0.701672)
+bones/14/rotation = Quaternion(-0.699448, -0.103056, 0.0989027, 0.700265)
+bones/18/rotation = Quaternion(-0.134364, 0.694114, 0.693509, -0.138554)
+
+[node name="COCKPIT" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.853205, -8.9407e-08, 2.13163e-14, 9.68575e-08, 0.853205, 1.15463e-14, -2.13163e-14, -1.06581e-14, 0.853205, -0.560446, 3.45706, -0.00326375)
+
+[node name="BASE" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.909085, -1.08371e-07, -1.42109e-14, 1.08371e-07, 0.909085, 1.43521e-14, 1.42109e-14, -1.29189e-14, 1.00994, -0.714091, 2.57586, 3.00506e-08)
+
+[node name="WHEEL_001" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(-1, 4.09782e-08, 2.33296e-07, -6.33299e-08, 1, -4.17076e-08, 9.49367e-08, -1.7295e-08, 1, -2.77581, 1.20632, -1.662)
+
+[node name="FRONT ARM_001" parent="Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.999244, 0.0388742, -2.84217e-14, -0.0388741, 0.999244, -2.84217e-14, 2.84217e-14, 5.68434e-14, 1, -1.90174, 1.49286, -1.20572)
+
+[node name="WHEEL_004" parent="Armature/Skeleton3D" index="4"]
+transform = Transform3D(-1, -1.82539e-07, 7.71252e-09, -2.16067e-07, 1, -1.15755e-07, -4.94183e-08, -1.68076e-07, -1, -2.77581, 1.20632, 1.67425)
+
+[node name="FRONT ARM" parent="Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.999244, 0.0388742, 7.10543e-14, -0.0388743, 0.999244, 2.84217e-14, 8.52651e-14, 5.68434e-14, -1, -1.90174, 1.49286, 1.20572)
+
+[node name="WHEEL_002" parent="Armature/Skeleton3D" index="6"]
+transform = Transform3D(-1, -5.66244e-07, 3.53553e-07, 1.22562e-06, 1, -3.18687e-07, 3.85713e-07, 3.71549e-07, 1, 2.79244, 1.20632, -1.662)
+
+[node name="BACK ARM" parent="Armature/Skeleton3D" index="7"]
+transform = Transform3D(-1, -8.04663e-07, -8.08242e-14, 7.7486e-07, 1, 1.84741e-13, -1.78968e-13, 9.9476e-14, 1, 1.90173, 1.49286, -1.20572)
+
+[node name="WHEEL_003" parent="Armature/Skeleton3D" index="8"]
+transform = Transform3D(-1, -2.01166e-07, -7.567e-10, -4.06057e-07, 1, -5.76129e-08, 9.87202e-08, -1.5244e-07, -1, 2.79244, 1.20632, 1.67425)
+
+[node name="BACK ARM_001" parent="Armature/Skeleton3D" index="9"]
+transform = Transform3D(-1, 8.9407e-08, -1.86517e-14, 5.96046e-08, 1, 2.84217e-14, 2.30926e-14, -2.84217e-14, -1, 1.90174, 1.49286, 1.20572)

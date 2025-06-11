@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq1su7xe61v00"]
+
+[ext_resource type="Script" uid="uid://cwb6cnp80ltaa" path="res://screen-test/entities/code-blocks/scripts/start_block.gd" id="1_dlook"]
+
+[node name="StartBlock18" type="Node2D"]
+script = ExtResource("1_dlook")
+size = Vector2(4, 34)
+in_connections = 0
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

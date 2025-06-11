@@ -61,12 +61,9 @@ func _process(delta):
 		if tracker.get_input(activate_action):
 			button_pressed = true
 
-
-	if !xr_start_node.is_xr_active():
-		if Input.is_action_pressed("ui_accept") or Input.is_action_pressed(activate_action_desktop):
-			button_pressed = true
-
-
+	# if !xr_start_node.is_xr_active():
+	# 	if Input.is_action_pressed("ui_accept") or Input.is_action_pressed(activate_action_desktop):
+	# 		button_pressed = true
 
 	if button_pressed:
 		_set_time_held(time_held + delta)

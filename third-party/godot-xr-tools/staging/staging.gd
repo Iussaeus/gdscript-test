@@ -135,7 +135,7 @@ func is_xr_class(name : String) -> bool:
 ##
 ## See [method XRToolsSceneBase.scene_loaded] for details on how to implement
 ## advanced scene-switching.
-func load_scene(p_scene_path : String, user_data = null) -> void:
+func load_scene(p_scene_path : String, load_save: bool = false, user_data = null) -> void:
 	# Do not load if in the editor
 	if Engine.is_editor_hint():
 		return
@@ -246,6 +246,8 @@ func load_scene(p_scene_path : String, user_data = null) -> void:
 
 	# We create a small delay here to give tracking some time to update our nodes...
 	await get_tree().create_timer(0.1).timeout
+	if load_save:
+		GameState.load_game()
 	current_scene.scene_loaded(user_data)
 	scene_loaded.emit(current_scene, user_data)
 

@@ -5,22 +5,23 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_2lx3d"]
 resource_local_to_scene = true
-size = Vector2(2.8, 1.9)
+size = Vector2(2.75, 1.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ykxj0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dh0vl"]
 viewport_path = NodePath("Viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pa8hj"]
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ykxj0")
+albedo_texture = SubResource("ViewportTexture_dh0vl")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ea7k"]
 resource_local_to_scene = true
-size = Vector3(2.8, 1.9, 0.02)
+size = Vector3(2.75, 1.5, 0.02)
 
 [node name="MainDisplay" instance=ExtResource("1_dpdc8")]
+screen_size = Vector2(2.75, 1.5)
 scene = ExtResource("2_pjoq3")
 viewport_size = Vector2(1000, 600)
 scene_properties_keys = PackedStringArray("evaluator_screen.gd")
@@ -33,6 +34,7 @@ mesh = SubResource("QuadMesh_2lx3d")
 surface_material_override/0 = SubResource("StandardMaterial3D_pa8hj")
 
 [node name="StaticBody3D" parent="." index="2"]
+screen_size = Vector2(2.75, 1.5)
 viewport_size = Vector2(1000, 600)
 
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]

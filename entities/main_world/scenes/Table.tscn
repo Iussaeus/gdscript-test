@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://3j1qg4t2khnj"]
+
+[ext_resource type="Texture2D" uid="uid://df36dw146gs1r" path="res://assets/wahooney.itch.io/white_grid.png" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+albedo_texture = ExtResource("1")
+metallic_specular = 0.2
+uv1_scale = Vector3(3, 8, 3)
+
+[sub_resource type="Curve3D" id="1"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector3Array(0, 0.05, 0, 0, -0.05, 0, 0, 0.1, 0, 0, 0, -0.05, 0, 0, 0.05, 0, 0, 0.1, 0, 0, -0.05, 0, 0, 0.05, 0, 0, 0.9, 0, -0.05, 0, 0, 0.05, 0, 0, 0.1, 1, 0, -0.05, 0, 0, 0.05, 0, 0, 0.9, 1, 0, 0, 0.05, 0, 0, -0.05, 0, 1, 0.9, 0, 0, 0.05, 0, 0, -0.05, 0, 1, 0.1, 0, 0.05, 0, 0, -0.05, 0, 0, 0.9, 0),
+"tilts": PackedFloat32Array(-1.56593, -1.55074, -1.55865, -1.57438, -1.57392, -1.57279, -1.56683, -1.56558)
+}
+point_count = 8
+
+[sub_resource type="BoxShape3D" id="3"]
+margin = 0.01
+size = Vector3(1, 1.1, 1.1)
+
+[node name="Table" type="StaticBody3D"]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.05, -0.5)
+polygon = PackedVector2Array(0, 0, 0, 0.05, 1, 0.05, 1, 0)
+mode = 2
+path_node = NodePath("Path3D")
+path_interval_type = 1
+path_interval = 0.05
+path_simplify_angle = 0.1
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 3.0
+path_joined = false
+material = SubResource("2")
+
+[node name="Path3D" type="Path3D" parent="CSGPolygon3D"]
+curve = SubResource("1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("3")

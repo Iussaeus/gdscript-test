@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://1bwemwb0aw7e"]
+
+[ext_resource type="PackedScene" uid="uid://40wyg6ltd333" path="res://entities/items/scenes/board.tscn" id="1_nkw1g"]
+[ext_resource type="PackedScene" uid="uid://b6g6mlrsuaeuy" path="res://entities/items/scenes/bumper.tscn" id="2_r0blj"]
+[ext_resource type="PackedScene" uid="uid://jg3klcjxw5u8" path="res://entities/items/scenes/laser.tscn" id="3_rfcfy"]
+
+[node name="Snap" type="Node3D"]
+
+[node name="Board" parent="." instance=ExtResource("1_nkw1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23814, 1.39847, -2.33803)
+collision_mask = 7
+picked_up_layer = 0
+
+[node name="Bumper" parent="." instance=ExtResource("2_r0blj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40841, 1.20931, -3.42232)
+
+[node name="Laser" parent="." instance=ExtResource("3_rfcfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39, 1.23531, -2.92494)
+collision_layer = 4
+collision_mask = 143

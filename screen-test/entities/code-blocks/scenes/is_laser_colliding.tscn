@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b70ao6g6y68u2"]
+
+[ext_resource type="Script" uid="uid://cv4qmve5x6poa" path="res://screen-test/entities/code-blocks/scripts/is_laser_colliding.gd" id="1_jxt1n"]
+
+[node name="IsLaserColliding" type="Node2D"]
+script = ExtResource("1_jxt1n")
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

@@ -1,45 +1,47 @@
 [gd_scene load_steps=8 format=3 uid="uid://b10n4pncpwdqa"]
 
 [ext_resource type="PackedScene" uid="uid://nnse6wsxsjeo" path="res://entities/pointer_demo/objects/display.tscn" id="1_dpdc8"]
-[ext_resource type="PackedScene" uid="uid://b6px7gktdy1wu" path="res://screen-test/entities/display/scripts/secondary screen.tscn" id="2_dpdc8"]
-[ext_resource type="PackedScene" uid="uid://hqd0ohtpmny4" path="res://screen-test/entities/code-blocks/base-block/scenes/code_block.tscn" id="3_pjoq3"]
+[ext_resource type="PackedScene" uid="uid://b6px7gktdy1wu" path="res://screen-test/entities/display/scenes/secondary screen.tscn" id="2_dpdc8"]
+[ext_resource type="PackedScene" uid="uid://dt0c8b40rkpdj" path="res://entities/items/scenes/monitor_32.tscn" id="3_pjoq3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_pjoq3"]
 resource_local_to_scene = true
-size = Vector2(2.8, 1.9)
+size = Vector2(0.45, 0.65)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pjoq3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4rshc"]
 viewport_path = NodePath("Viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjoq3"]
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_pjoq3")
-texture_filter = 1
+albedo_texture = SubResource("ViewportTexture_4rshc")
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0rs0"]
 resource_local_to_scene = true
-size = Vector3(2.8, 1.9, 0.02)
+size = Vector3(0.45, 0.65, 0.02)
 
 [node name="SecondaryDisplay" instance=ExtResource("1_dpdc8")]
+screen_size = Vector2(0.45, 0.65)
 scene = ExtResource("2_dpdc8")
 viewport_size = Vector2(1175, 600)
-scene_properties_keys = PackedStringArray("secondary_screen.gd", "jump_block", "var_block", "if_block", "laser_block", "rotate_block", "move_block")
-jump_block = ExtResource("3_pjoq3")
-var_block = null
-if_block = null
-laser_block = null
-rotate_block = null
-move_block = null
+update_mode = 1
+throttle_fps = 60.0
+filter = false
+scene_properties_keys = PackedStringArray("secondary_screen.gd")
 
-[node name="Viewport" parent="." index="0"]
+[node name="Monitor_32" parent="." index="0" instance=ExtResource("3_pjoq3")]
+transform = Transform3D(-4.37114e-08, 1.2, 0, -1, -5.24537e-08, 0, 0, 0, 1, -0.37791, -0.00929081, -0.0812805)
+
+[node name="Viewport" parent="." index="1"]
 size = Vector2i(1175, 600)
 
-[node name="Screen" parent="." index="1"]
+[node name="Screen" parent="." index="2"]
 mesh = SubResource("QuadMesh_pjoq3")
 surface_material_override/0 = SubResource("StandardMaterial3D_pjoq3")
 
-[node name="StaticBody3D" parent="." index="2"]
+[node name="StaticBody3D" parent="." index="3"]
+screen_size = Vector2(0.45, 0.65)
 viewport_size = Vector2(1175, 600)
 
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]

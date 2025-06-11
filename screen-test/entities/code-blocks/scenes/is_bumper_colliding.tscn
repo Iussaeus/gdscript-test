@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnl65mcq438ss"]
+
+[ext_resource type="Script" uid="uid://dcdjamoilmh1q" path="res://screen-test/entities/code-blocks/scripts/is_bumper_colliding.gd" id="1_qu7rx"]
+
+[node name="IsBumperColliding" type="Node2D"]
+script = ExtResource("1_qu7rx")
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

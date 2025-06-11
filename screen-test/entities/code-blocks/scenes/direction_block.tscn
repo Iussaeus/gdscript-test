@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxuvycdwngmnt"]
+
+[ext_resource type="Script" uid="uid://c14d0nkww8qdj" path="res://screen-test/entities/code-blocks/scripts/direction_block.gd" id="1_e0ejp"]
+
+[node name="DirectionBlock" type="Node2D"]
+script = ExtResource("1_e0ejp")
+size = Vector2(256, 42)
+in_connections = 0
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmgsbxhbib228"]
+
+[ext_resource type="Script" uid="uid://ddcl1icmt8vra" path="res://screen-test/entities/code-blocks/scripts/jump_block.gd" id="1_kojti"]
+
+[node name="JumpBlock" type="Node2D"]
+script = ExtResource("1_kojti")
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

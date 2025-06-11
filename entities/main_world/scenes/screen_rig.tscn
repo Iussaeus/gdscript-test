@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://co1chsbjkhxn2"]
+
+[ext_resource type="PackedScene" uid="uid://bwlwy1vao7i7s" path="res://screen-test/entities/display/scenes/main_display.tscn" id="1_wefp0"]
+[ext_resource type="PackedScene" uid="uid://dgdb1texynduw" path="res://third-party/godot-xr-tools/objects/virtual_keyboard.tscn" id="2_3erxi"]
+[ext_resource type="PackedScene" uid="uid://b10n4pncpwdqa" path="res://screen-test/entities/display/scenes/secondary_display.tscn" id="3_8w1yr"]
+
+[node name="Screen" type="Node3D"]
+
+[node name="MainDisplay" parent="." instance=ExtResource("1_wefp0")]
+transform = Transform3D(-0.172101, 0, 0.985079, 0, 1, 0, -0.985079, 0, -0.172101, -1.74028, 2.11694, -1.16261)
+viewport_size = Vector2(1600, 900)
+filter = true
+
+[node name="VirtualKeyboard" parent="." instance=ExtResource("2_3erxi")]
+transform = Transform3D(-0.171929, -0.587346, 0.790863, 0, 0.802817, 0.596225, -0.985109, 0.102508, -0.138028, -1.50375, 1.29197, -1.21995)
+screen_size = Vector2(0.75, 0.375)
+scene_properties_keys = PackedStringArray("virtual_keyboard_2d.gd")
+
+[node name="SecondaryDisplay" parent="." instance=ExtResource("3_8w1yr")]
+transform = Transform3D(0.421036, 0, 0.907045, 0, 0.999999, 0, -0.907044, 0, 0.421036, -1.78413, 1.77216, -2.14457)
+viewport_size = Vector2(460, 620)

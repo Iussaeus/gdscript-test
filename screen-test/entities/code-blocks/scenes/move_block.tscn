@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4ykhy0cdkcvy"]
+
+[ext_resource type="Script" uid="uid://b5c5ymg05m14n" path="res://screen-test/entities/code-blocks/scripts/move_block.gd" id="1_ssce8"]
+
+[node name="MoveBlock" type="Node2D"]
+script = ExtResource("1_ssce8")
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://sncsiwg2k8lu"]
+
+[ext_resource type="Script" uid="uid://d1j5gf4b4pcbl" path="res://screen-test/entities/code-blocks/scripts/not_block.gd" id="1_mowsm"]
+
+[node name="NotBlock21" type="Node2D"]
+script = ExtResource("1_mowsm")
+size = Vector2(256, 68)
+in_connections = 2
+out_connections = 2
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

@@ -1,22 +1,27 @@
 class_name PlayerController
 
-extends CharacterBody3D
+extends XROrigin3D
 
-@export var movement_speed: float = 1.0
-## IN RADIANS
-@export var rotation_speed: float = 0.1
-@export var h_acceleration: float = 0.1
-
-@onready var origin: XROrigin3D = $XROrigin3D
-@onready var camera: Camera3D = $XROrigin3D/XRCamera3D
-@onready var neck: Node3D = $XROrigin3D/XRCamera3D/Neck
-
-# var _h_velocity: Vector3
-
+@export var primary_action_button_action : String = "primary_click"
+@onready var _controller := XRHelpers.get_xr_controller($RightHand)
 
 func _ready() -> void:
-	pass
-
+	GameState.player_spawned.emit(self)
 
 func _process(_delta: float) -> void:
-	pass
+	if _controller.get_input(primary_action_button_action):
+		if not GameState.in_main_menu:
+			GameState.open_menu()
+			print("INFO: Opened main menu")
+		elif GameState.in_main_menu:
+			GameState.close_menu()
+			print("INFO: Closed main menu")
+		await get_tree().create_timer(1).timeout
+
+func get_state() -> Dictionary:
+	return {
+		position = var_to_str(position),
+	}
+
+func load_state(state: Dictionary) -> void:
+	position = str_to_var(state.position)

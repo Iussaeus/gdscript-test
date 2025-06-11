@@ -122,7 +122,6 @@ func _on_pointer_event(event : XRToolsPointerEvent) -> void:
 	if pointer == _mouse:
 		match type:
 			XRToolsPointerEvent.Type.PRESSED:
-				prints("viewport event", type)
 				_report_mouse_down(at)
 
 			XRToolsPointerEvent.Type.RELEASED:

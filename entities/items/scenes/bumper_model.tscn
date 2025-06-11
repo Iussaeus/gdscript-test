@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://db8i1yu4w5dhr"]
+
+[ext_resource type="PackedScene" uid="uid://c036pecc1yubh" path="res://assets/models/uploads_files_1983752_fab_fours_black_steel+_elite+_full_guard.blend" id="1_bpnh4"]
+
+[node name="uploads_files_1983752_fab_fours_black_steel+_elite+_full_guard" instance=ExtResource("1_bpnh4")]

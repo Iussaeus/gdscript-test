@@ -185,11 +185,9 @@ func _process(delta):
 		grip_pressed = true
 		_on_grip_pressed()
 
-	if (focused_object and _object_in_ranged_area.size() <= 1 and 
-	not focused_object.global_position.is_equal_approx(_function_pointer.global_position)):
+	if focused_object and _object_in_ranged_area.size() <= 1:
 		_function_pointer.look_at(focused_object.global_position)
-	elif (is_instance_valid(closest_object) and 
-	not closest_object.global_position.is_equal_approx(_function_pointer.global_position)):
+	elif is_instance_valid(closest_object):
 		_function_pointer.look_at(closest_object.global_position)
 	else:
 		_function_pointer.basis = _function_pointer.base_basis
@@ -318,6 +316,7 @@ func _on_ranged_entered(target: Node3D) -> void:
 
 	if target is XRToolsPickable and _object_in_ranged_area.size() == 0:
 		focused_object = target
+		# prints("got target", target)
 	else:
 		focused_object = _get_closest_ranged()
 		focused_object = null

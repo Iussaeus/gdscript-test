@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dro7uu7vtgsmn"]
+[gd_scene load_steps=4 format=3 uid="uid://dro7uu7vtgsmn"]
 
 [ext_resource type="Script" uid="uid://coxrxcooudhex" path="res://screen-test/entities/evaluator/scripts/cursor.gd" id="1_nbg3o"]
-[ext_resource type="Texture2D" uid="uid://ciflriq7q863w" path="res://icon.svg" id="2_ubgbp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ifhb8"]
 radius = 15.0
@@ -20,9 +19,9 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_ifhb8")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 scale = Vector2(0.5, 0.5)
 mesh = SubResource("SphereMesh_do11n")
-texture = ExtResource("2_ubgbp")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 

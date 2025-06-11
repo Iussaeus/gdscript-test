@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7ltni7i1kkfs"]
+
+[ext_resource type="Script" uid="uid://b6jiwcdgqdfjv" path="res://screen-test/entities/code-blocks/scripts/code_block.gd" id="1_xr4nc"]
+
+[node name="ConstantsBlock" type="Node2D"]
+script = ExtResource("1_xr4nc")
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

@@ -450,13 +450,12 @@ func _on_pointer_event(event: XRToolsPointerEvent) -> void:
 	if event.target is not XRToolsPickable:
 		return
 
-	if event.target.is_picked_up():
-		event.target.request_highlight(event.pointer, false)
+	if !event.target.is_picked_up():
+		event.target.request_highlight(event.pointer, true)
 
 	match event.event_type:
 		XRToolsPointerEvent.Type.ENTERED, XRToolsPointerEvent.Type.PRESSED, XRToolsPointerEvent.Type.MOVED:
 			request_highlight(event.pointer, true)
 
 		XRToolsPointerEvent.Type.RELEASED, XRToolsPointerEvent.Type.EXITED:
-			# event.pointer.basis = event.pointer.base_basis 
 			request_highlight(event.pointer, false)

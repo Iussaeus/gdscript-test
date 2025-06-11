@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6g6mlrsuaeuy"]
+
+[ext_resource type="Script" uid="uid://c5ljk76cc6elq" path="res://entities/items/scripts/bumper.gd" id="1_fw44t"]
+[ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://third-party/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="2_fw44t"]
+[ext_resource type="PackedScene" uid="uid://db8i1yu4w5dhr" path="res://entities/items/scenes/bumper_model.tscn" id="3_2vqau"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://third-party/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="5_vqa0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vqau"]
+size = Vector3(0.2, 0.557593, 0.2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fw44t"]
+height = 0.282617
+radius = 0.15
+
+[node name="Bumper" type="RigidBody3D" groups=["snapable"]]
+collision_layer = 20
+collision_mask = 131075
+script = ExtResource("1_fw44t")
+picked_up_layer = 8
+ranged_grab_method = 2
+second_hand_grab = 1
+metadata/_custom_type_script = "uid://84mquamqpfj"
+
+[node name="GrabPointSnap" parent="." instance=ExtResource("2_fw44t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0142561, 0, 0)
+visible = true
+require_group = "snapable"
+
+[node name="uploads_files_1983752_fab_fours_black_steel+_elite+_full_guard" parent="." instance=ExtResource("3_2vqau")]
+transform = Transform3D(0.04, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, -0.113452, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00489503, 0.00402832, 0)
+shape = SubResource("BoxShape3D_2vqau")
+
+[node name="HighlightRing" parent="." instance=ExtResource("5_vqa0r")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 131
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00439452, 1.9209e-10, 0)
+shape = SubResource("CylinderShape3D_fw44t")

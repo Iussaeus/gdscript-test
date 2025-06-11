@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt0c8b40rkpdj"]
+
+[ext_resource type="PackedScene" uid="uid://c216u7bdiavws" path="res://assets/models/Monitor_32/Monitor_32.gltf" id="1_vcptw"]
+
+[node name="Monitor_32" instance=ExtResource("1_vcptw")]
+
+[node name="Monitor_32_Stand_Base" parent="Monitor_32_grp" index="1"]
+visible = false
+
+[node name="Monitor_32_Stand_Rod" parent="Monitor_32_grp" index="2"]
+visible = false
+
+[node name="Monitor_32_Stand_Rod_Hinge" parent="Monitor_32_grp" index="3"]
+visible = false
+
+[node name="Monitor_32_Stand_Vesa" parent="Monitor_32_grp" index="4"]
+visible = false

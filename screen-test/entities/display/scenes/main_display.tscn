@@ -1,39 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwlwy1vao7i7s"]
+[gd_scene load_steps=8 format=3 uid="uid://bwlwy1vao7i7s"]
 
 [ext_resource type="PackedScene" uid="uid://nnse6wsxsjeo" path="res://entities/pointer_demo/objects/display.tscn" id="1_6d8w7"]
 [ext_resource type="PackedScene" uid="uid://b4tp0la70dat" path="res://screen-test/entities/evaluator/scenes/evaluator_screen.tscn" id="2_27ln6"]
+[ext_resource type="PackedScene" uid="uid://dt0c8b40rkpdj" path="res://entities/items/scenes/monitor_32.tscn" id="3_8lhyv"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2lx3d"]
 resource_local_to_scene = true
-size = Vector2(2.8, 1.9)
+size = Vector2(1.4, 0.95)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6t2jt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_acs1v"]
 viewport_path = NodePath("Viewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lhyv"]
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_6t2jt")
-texture_filter = 1
+albedo_texture = SubResource("ViewportTexture_acs1v")
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ea7k"]
 resource_local_to_scene = true
-size = Vector3(2.8, 1.9, 0.02)
+size = Vector3(1.4, 0.95, 0.02)
 
 [node name="MainDisplay" instance=ExtResource("1_6d8w7")]
+screen_size = Vector2(1.4, 0.95)
 scene = ExtResource("2_27ln6")
-viewport_size = Vector2(1000, 600)
+viewport_size = Vector2(1280, 720)
+update_mode = 1
+throttle_fps = 60.0
+filter = false
 scene_properties_keys = PackedStringArray("evaluator_screen.gd")
 
 [node name="Viewport" parent="." index="0"]
-size = Vector2i(1000, 600)
+size = Vector2i(1280, 720)
 
 [node name="Screen" parent="." index="1"]
 mesh = SubResource("QuadMesh_2lx3d")
 surface_material_override/0 = SubResource("StandardMaterial3D_8lhyv")
 
 [node name="StaticBody3D" parent="." index="2"]
-viewport_size = Vector2(1000, 600)
+screen_size = Vector2(1.4, 0.95)
+viewport_size = Vector2(1280, 720)
 
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_1ea7k")
+
+[node name="Monitor_32" parent="." index="3" instance=ExtResource("3_8lhyv")]
+transform = Transform3D(2.1, 0, 0, 0, 2.6, 0, 0, 0, 1, 0, -0.827, -0.0902219)

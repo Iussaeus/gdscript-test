@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjq35lkc5lofy"]
+
+[ext_resource type="Script" uid="uid://cklajkcgulomy" path="res://screen-test/entities/code-blocks/scripts/end_block.gd" id="1_yuvi0"]
+
+[node name="EndBlock16" type="Node2D"]
+script = ExtResource("1_yuvi0")
+size = Vector2(64, 34)
+out_connections = 0
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnf52kcw32d5"]
+
+[ext_resource type="Script" uid="uid://cepn5rjx761tt" path="res://screen-test/entities/code-blocks/scripts/arithmetic_block.gd" id="1_ysiep"]
+
+[node name="ArithmeticBlock53" type="Node2D"]
+script = ExtResource("1_ysiep")
+size = Vector2(256, 102)
+in_connections = 3
+out_connections = 2
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

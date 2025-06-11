@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://40wyg6ltd333"]
+[gd_scene load_steps=15 format=3 uid="uid://40wyg6ltd333"]
 
 [ext_resource type="Script" uid="uid://cq4e32mhssv44" path="res://entities/items/scripts/board.gd" id="1_72uvo"]
+[ext_resource type="PackedScene" uid="uid://p0thqhbn67vb" path="res://entities/items/scenes/rover.tscn" id="2_72uvo"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://third-party/godot-xr-tools/objects/grab_points/snap_zone.tscn" id="2_382xr"]
 [ext_resource type="Material" uid="uid://dyx4l6ea0am6f" path="res://addons/prototype_mini_bundle/M_prototype_green.tres" id="2_hu00f"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://third-party/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_p6ks7"]
@@ -8,15 +9,14 @@
 [ext_resource type="Script" uid="uid://c1ugkwmhkr24y" path="res://third-party/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_hu00f"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://third-party/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_qnq1j"]
 [ext_resource type="Animation" uid="uid://wcwa3p1qrhwr" path="res://third-party/godot-xr-tools/hands/animations/right/Rounded.res" id="6_72uvo"]
-[ext_resource type="PackedScene" uid="uid://f7y8pe7g4bp5" path="res://entities/items/scenes/object_highlighting.tscn" id="9_hu00f"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://third-party/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="10_qnq1j"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_y1gox"]
 material = ExtResource("2_hu00f")
-size = Vector3(0.5, 0.1, 0.5)
+size = Vector3(0.25, 0.25, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0snby"]
-size = Vector3(0.5, 0.1, 0.5)
+size = Vector3(0.25, 0.25, 0.5)
 
 [sub_resource type="Resource" id="Resource_4nn8j"]
 script = ExtResource("4_hu00f")
@@ -28,61 +28,65 @@ script = ExtResource("4_hu00f")
 closed_pose = ExtResource("6_72uvo")
 metadata/_custom_type_script = "uid://c1ugkwmhkr24y"
 
-[sub_resource type="BoxMesh" id="BoxMesh_qnq1j"]
-flip_faces = true
-size = Vector3(0.55, 0.11, 0.55)
-
 [node name="Board" type="RigidBody3D"]
 collision_layer = 64
-collision_mask = 196639
+collision_mask = 196611
 mass = 3.0
+contact_monitor = true
 script = ExtResource("1_72uvo")
-picked_up_layer = 65600
+picked_up_layer = 196608
 ranged_grab_method = 2
-second_hand_grab = 2
 metadata/_custom_type_script = "uid://f3h06vo6saay"
 
+[node name="ROVER" parent="." instance=ExtResource("2_72uvo")]
+transform = Transform3D(-2.62268e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.62268e-09, 0, -0.0843676, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000632524, 0, -0.000883102)
+visible = false
 mesh = SubResource("BoxMesh_y1gox")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000632524, 0, -0.000883102)
 shape = SubResource("BoxShape3D_0snby")
 
-[node name="GrabPointHandLeft" parent="." instance=ExtResource("2_p6ks7")]
-transform = Transform3D(0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, 0, 1, -0.25, 0, -0.1)
-visible = true
-mode = 2
-snap_hand = false
-hand_pose = SubResource("Resource_4nn8j")
-
-[node name="GrabPointHandRight" parent="." instance=ExtResource("5_qnq1j")]
-transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, 0.25, 0, -0.1)
-visible = true
-mode = 1
-snap_hand = false
-hand_pose = SubResource("Resource_wbsr6")
-
 [node name="SnapZone" parent="." instance=ExtResource("2_382xr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.311911)
-collision_mask = 65544
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00253153, 0, 0.308375)
+collision_layer = 0
+collision_mask = 65560
+grab_distance = 0.15
 snap_require = "snapable"
 
 [node name="SnapZone2" parent="." instance=ExtResource("2_382xr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.329616)
-collision_mask = 65544
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00253153, 0, -0.333152)
+collision_layer = 0
+collision_mask = 65560
+grab_distance = 0.15
 snap_require = "snapable"
 
 [node name="SnapZone3" parent="." instance=ExtResource("2_382xr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.318106, 0, -0.0161507)
-collision_mask = 65544
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.320638, 0, -0.0196862)
+collision_layer = 0
+collision_mask = 65560
+grab_distance = 0.15
 snap_require = "snapable"
 
 [node name="SnapZone4" parent="." instance=ExtResource("2_382xr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.353511, 0, -0.0042702)
-collision_mask = 65544
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.350979, 0, -0.00780571)
+collision_layer = 0
+collision_mask = 65560
+grab_distance = 0.15
 snap_require = "snapable"
 
-[node name="ObjectHighlighting" parent="." instance=ExtResource("9_hu00f")]
-mesh = SubResource("BoxMesh_qnq1j")
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("2_p6ks7")]
+transform = Transform3D(0.999669, -0.0257231, 0, 0.0257231, 0.999669, 0, 0, 0, 1, -0.241848, 0.0197776, -0.1)
+visible = true
+hand_pose = SubResource("Resource_4nn8j")
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("5_qnq1j")]
+transform = Transform3D(0.993461, 0.114174, 0, -0.114174, 0.993461, 0, 0, 0, 1, 0.197742, 0.0372247, -0.1)
+visible = true
+hand_pose = SubResource("Resource_wbsr6")
 
 [node name="HighlightRing" parent="." instance=ExtResource("10_qnq1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00166153, 0.0055564, -0.000883102)

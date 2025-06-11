@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://jg3klcjxw5u8"]
+
+[ext_resource type="Script" uid="uid://o62t6qb0s2e5" path="res://entities/items/scripts/laser.gd" id="1_6cqp2"]
+[ext_resource type="PackedScene" uid="uid://dan2q2uks0g3q" path="res://assets/models/Traffic Road Assets/GLB/Cones/Traffic_Cone.glb" id="2_6cqp2"]
+[ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://third-party/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="2_jg2bf"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://third-party/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="5_n2fsu"]
+[ext_resource type="Material" path="res://third-party/godot-xr-tools/materials/pointer.tres" id="6_wbe3d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbe3d"]
+size = Vector3(0.1, 0.2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n2fsu"]
+resource_local_to_scene = true
+material = ExtResource("6_wbe3d")
+size = Vector3(0.002, 0.002, 10)
+subdivide_depth = 20
+
+[sub_resource type="SphereMesh" id="SphereMesh_f5ab4"]
+material = ExtResource("6_wbe3d")
+radius = 0.05
+height = 0.1
+radial_segments = 16
+rings = 8
+
+[node name="Laser" type="RigidBody3D" groups=["snapable"]]
+collision_layer = 12
+collision_mask = 3
+script = ExtResource("1_6cqp2")
+distance = 1.0
+picked_up_layer = 8
+ranged_grab_method = 2
+second_hand_grab = 1
+metadata/_custom_type_script = "uid://84mquamqpfj"
+
+[node name="Traffic_Cone" parent="." instance=ExtResource("2_6cqp2")]
+transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, 0.04, 0, -0.04, -1.74846e-09, 0, 0, -0.00870867)
+
+[node name="GrabPointSnap" parent="." instance=ExtResource("2_jg2bf")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0086432, 0.0170341)
+visible = true
+require_group = "snapable"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_wbe3d")
+
+[node name="HighlightRing" parent="." instance=ExtResource("5_n2fsu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="RayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12901)
+target_position = Vector3(0, 0, -10)
+collision_mask = 5439615
+
+[node name="Laser" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013, -4.90823)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_n2fsu")
+
+[node name="Target" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_f5ab4")

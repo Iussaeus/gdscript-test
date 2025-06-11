@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.2.1 commit date:2022-07-05, commit time:15:44, hash:a2d59b2dac9e</authoring_tool>
+    </contributor>
+    <created>2023-04-30T01:07:07</created>
+    <modified>2023-04-30T01:07:07</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_geometries>
+    <geometry id="_D_Shapes_Pack_-_Wedge-mesh" name="3D Shapes Pack - Wedge">
+      <mesh>
+        <source id="_D_Shapes_Pack_-_Wedge-mesh-positions">
+          <float_array id="_D_Shapes_Pack_-_Wedge-mesh-positions-array" count="18">-1 -1 -1 -1 1 -1 1 -1 -1 1 -1 1 1 1 -1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#_D_Shapes_Pack_-_Wedge-mesh-positions-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_D_Shapes_Pack_-_Wedge-mesh-normals">
+          <float_array id="_D_Shapes_Pack_-_Wedge-mesh-normals-array" count="15">0 1 0 1 0 0 0 -1 0 0 0 -1 -0.7071068 0 0.7071068</float_array>
+          <technique_common>
+            <accessor source="#_D_Shapes_Pack_-_Wedge-mesh-normals-array" count="5" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="_D_Shapes_Pack_-_Wedge-mesh-map-0">
+          <float_array id="_D_Shapes_Pack_-_Wedge-mesh-map-0-array" count="48">0.375 0.25 0.625 0.5 0.375 0.5 0.625 0.5 0.375 0.75 0.375 0.5 0.375 0.75 0.625 0.75 0.375 1 0.375 0.5 0.125 0.75 0.125 0.5 0.375 0.25 0.625 0.75 0.625 0.5 0.625 0.5 0.625 0.75 0.375 0.75 0.375 0.5 0.375 0.75 0.125 0.75 0.375 0.25 0.375 0 0.625 0.75</float_array>
+          <technique_common>
+            <accessor source="#_D_Shapes_Pack_-_Wedge-mesh-map-0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="_D_Shapes_Pack_-_Wedge-mesh-vertices">
+          <input semantic="POSITION" source="#_D_Shapes_Pack_-_Wedge-mesh-positions"/>
+        </vertices>
+        <triangles count="8">
+          <input semantic="VERTEX" source="#_D_Shapes_Pack_-_Wedge-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#_D_Shapes_Pack_-_Wedge-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#_D_Shapes_Pack_-_Wedge-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 5 0 1 4 0 2 5 1 3 2 1 4 4 1 5 2 2 6 3 2 7 0 2 8 4 3 9 0 3 10 1 3 11 1 4 12 3 4 13 5 4 14 5 1 15 3 1 16 2 1 17 4 3 18 2 3 19 0 3 20 1 4 21 0 4 22 3 4 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="_D_Shapes_Pack_-_Wedge" name="3D Shapes Pack - Wedge" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#_D_Shapes_Pack_-_Wedge-mesh" name="3D Shapes Pack - Wedge"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

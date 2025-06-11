@@ -1,11 +1,17 @@
-class_name Helpers
-
-extends Node
+class_name Helpers extends Node
 
 
 static func forward_vector(node: Node3D) -> Vector3:
 	return -node.transform.basis.z
 
+static func back_vector(node: Node3D) -> Vector3:
+	return node.transform.basis.z
+
+static func left_vector(node: Node3D) -> Vector3:
+	return -node.transform.basis.x
+
+static func right_vector(node: Node3D) -> Vector3:
+	return node.transform.basis.x
 
 ### No real type safety, be sure the func takes one float and returns one
 static func map_vector3(v: Vector3, fun: Callable) -> Vector3:
@@ -60,6 +66,9 @@ static func print_array(a: Array) -> void:
 static func print_dict(d: Dictionary) -> void:
 	var print_str := String()
 	for i: Variant in d.keys():
-		print_str += "%s: %s " % [i, d[i]]
+		if d[i] == d.values()[d.values().size() - 1]:
+			print_str += "%s: %s " % [i, d[i]]
+		else:
+			print_str += "%s: %s, " % [i, d[i]]
 
 	print(print_str)

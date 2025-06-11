@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://db3xccuvrxfo0"]
+
+[ext_resource type="Script" uid="uid://bof7bpr72nu77" path="res://entities/items/scripts/thruster.gd" id="1_2dh63"]
+[ext_resource type="Material" uid="uid://cmu4vfp7y5t6b" path="res://addons/prototype_mini_bundle/M_prototype_purple.tres" id="2_cff2d"]
+[ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://third-party/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="3_24glx"]
+[ext_resource type="PackedScene" uid="uid://f7y8pe7g4bp5" path="res://entities/items/scenes/object_highlighting.tscn" id="4_0rw3w"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://third-party/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="5_7waep"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jqmln"]
+material = ExtResource("2_cff2d")
+size = Vector3(0.25, 0.15, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jr71t"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_36ffb"]
+flip_faces = true
+size = Vector3(0.255, 0.155, 0.155)
+
+[node name="Thruster" type="RigidBody3D" groups=["snapable"]]
+collision_layer = 16
+collision_mask = 31
+mass = 0.1
+script = ExtResource("1_2dh63")
+picked_up_layer = 196608
+second_hand_grab = 1
+bonus_velocity = 0.5
+metadata/_custom_type_script = "uid://f3h06vo6saay"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jqmln")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jr71t")
+
+[node name="GrabPointSnap" parent="." instance=ExtResource("3_24glx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148916, 0, 0)
+visible = true
+require_group = "snapable"
+
+[node name="ObjectHighlighting" parent="." instance=ExtResource("4_0rw3w")]
+mesh = SubResource("BoxMesh_36ffb")
+skeleton = NodePath("")
+
+[node name="HighlightRing" parent="." instance=ExtResource("5_7waep")]

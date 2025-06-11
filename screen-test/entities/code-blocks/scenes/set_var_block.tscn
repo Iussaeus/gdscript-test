@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwnfr7oqwvgfq"]
+
+[ext_resource type="Script" uid="uid://cdpm5a3tf3x6e" path="res://screen-test/entities/code-blocks/scripts/set_var_block.gd" id="1_w8hxi"]
+
+[node name="SetVarBlock163" type="Node2D"]
+script = ExtResource("1_w8hxi")
+size = Vector2(256, 68)
+in_connections = 2
+metadata/_custom_type_script = "uid://b6jiwcdgqdfjv"

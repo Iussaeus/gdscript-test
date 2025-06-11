@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxvxy65pv5hoe"]
 
-[ext_resource type="Material" path="res://addons/prototype_mini_bundle/M_prototype_green.tres" id="1_bpstc"]
+[ext_resource type="Material" uid="uid://dyx4l6ea0am6f" path="res://addons/prototype_mini_bundle/M_prototype_green.tres" id="1_bpstc"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_xdm36"]
 material = ExtResource("1_bpstc")
@@ -11,6 +11,7 @@ material = ExtResource("1_bpstc")
 mesh = SubResource("SphereMesh_xdm36")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("SphereShape3D_lykri")
